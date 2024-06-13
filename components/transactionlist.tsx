@@ -5,7 +5,12 @@ import { Transaction } from '@/types';
 import { TRANSACTIONTYPES } from '@prisma/client';
 import { NextResponse } from 'next/server';
 
-const TransactionList = () => {
+interface TransactionListProps {
+  userId: string;
+  transactions: Transaction[];
+}
+
+const TransactionList : React.FC<TransactionListProps> = ({ userId, transactions }) => {
   const [income, setIncome] = useState<Transaction[]>([]);
   const [expenses, setExpenses] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
