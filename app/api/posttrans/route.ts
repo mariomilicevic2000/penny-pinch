@@ -12,7 +12,10 @@ export async function POST(req: NextRequest) {
     console.log("Received body:", body);
 
     if (!amount || !date || !description || !type || !userId) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
     }
 
     const transaction = await prisma.transaction.create({
@@ -30,6 +33,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(transaction);
   } catch (error) {
     console.error("Failed to add transaction:", error);
-    return NextResponse.json({ error: "Failed to add transaction" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to add transaction" },
+      { status: 500 }
+    );
   }
 }
