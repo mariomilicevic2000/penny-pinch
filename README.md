@@ -1,6 +1,6 @@
 # [WIP]Penny Pinch
 
-PennyPinch.com is envisioned to be an easy way to track your finances. The app offers simple logging for you income and expenses, calculates your balance, and in the future it will offer you much more insight into your spending habits and ways you can improve your finances.
+PennyPinch.com is envisioned to be an easy way to track your finances. The app offers simple logging for your income and expenses, calculates your balance, and in the future it will offer you much more insight into your spending habits and ways you can improve your finances.
 
 The app is public and free to use, you can find it here: https://penny-pinch-ecru.vercel.app/
 
