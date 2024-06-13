@@ -3,7 +3,7 @@ import TransactionList from "@/components/transactionlist";
 import AddTransaction from "@/components/addtransaction";
 import Summary from "@/components/summary";
 
-export default function BlogPage() {
+export default function DashboardPage() {
   return (
     <div className="w-full flex flex-col">
       <h1 className={title()}>Welcome, User!</h1>
