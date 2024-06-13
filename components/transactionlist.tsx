@@ -1,50 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import ExpenseCard from './expensecard';
-import prisma from '@/lib/db';
-import { TRANSACTIONTYPES } from '@prisma/client';
+import { Transaction } from '@/types';
 
-const dynamic = 'force-dynamic';
+const TransactionList = () => {
+  const [income, setIncome] = useState<Transaction[]>([]);
+  const [expenses, setExpenses] = useState<Transaction[]>([]);
+  const [loading, setLoading] = useState(true);
 
-// export default function TransactionList() {
-//   const [transactions, setTransactions] = useState([]);
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const response = await fetch('/api/fetchtrans');
+        const data: Transaction[] = await response.json();
+        setIncome(data.filter(transaction => transaction.type === 'INCOME'));
+        setExpenses(data.filter(transaction => transaction.type === 'EXPENSE'));
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching transactions:', error);
+        setLoading(false);
+      }
+    };
 
-//   useEffect(() => {
-//     async function fetchTransactions() {
-//       try {
-//         const response = await fetch('/api/fetchtrans');
-//         const data = await response.json();
-//         setTransactions(data);
-//       } catch (error) {
-//         console.error('Error fetching transactions:', error);
-//       }
-//     }
+    fetchTransactions();
+  }, []);
 
-//     fetchTransactions();
-//   }, []);
-
-//   return (
-//     <div className="grid grid-cols-1 gap-4">
-//       {transactions.map(transaction => (
-//         <ExpenseCard transaction={transaction} />
-//       ))}
-//     </div>
-//   );
-// }
-
-export default async function TransactionList() {
-  
-  const income = await prisma.transaction.findMany({
-    where: {
-      type: TRANSACTIONTYPES.INCOME,
-    },
-  });
-
-  const expenses = await prisma.transaction.findMany({
-    where: {
-      type: TRANSACTIONTYPES.EXPENSE,
-    },
-  });
-
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className='w-full flex flex-row gap-4'>
@@ -63,7 +45,9 @@ export default async function TransactionList() {
             <ExpenseCard transaction={transaction} key={transaction.id}/>
           ))}
         </div>
+      </div>
     </div>
-  </div>
   );
-}
+};
+
+export default TransactionList;
