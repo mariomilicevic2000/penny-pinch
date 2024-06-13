@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react';
 import ExpenseCard from './expensecard';
 import { Transaction } from '@/types';
