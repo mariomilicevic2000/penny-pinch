@@ -4,6 +4,8 @@ import AddTransaction from '@/components/addtransaction';
 import TransactionList from '@/components/transactionlist';
 import { Transaction } from '@/types';
 
+export const fetchCache = 'force-no-store';
+
 const DashboardPage: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 

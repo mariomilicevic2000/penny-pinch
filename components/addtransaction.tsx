@@ -15,6 +15,7 @@ import { expensetypes, incometypes } from "@/lib/data";
 import { Input } from "@nextui-org/input";
 import { Textarea } from "@nextui-org/input";
 import { randomUUID } from "crypto";
+import { revalidateTag } from "next/cache";
 
 export default function AddTransaction({ onTransactionAdded } : any) {
   const { isOpen, onOpen, onClose } = useDisclosure();
