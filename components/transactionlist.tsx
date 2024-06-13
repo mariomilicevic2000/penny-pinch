@@ -18,7 +18,7 @@ const TransactionList : React.FC<TransactionListProps> = ({ userId, transactions
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await fetch('/api/fetchtrans', {cache: "no-store"});
+        const response = await fetch('/api/fetchtrans', {next: { revalidate: 0 }});
         const data: any = await response.json();
         const transactions: Transaction[] = data.data;
 
