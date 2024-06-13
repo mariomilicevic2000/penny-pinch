@@ -2,7 +2,7 @@
 
 PennyPinch.com is envisioned to be an easy way to track your finances. The app offers simple logging for you income and expenses, calculates your balance, and in the future it will offer you much more insight into your spending habits and ways you can improve your finances.
 
-The app is public and free to use, you can find it here: 
+The app is public and free to use, you can find it here: https://penny-pinch-ecru.vercel.app/
 
 ## Technologies Used
 
@@ -21,18 +21,33 @@ The app is public and free to use, you can find it here:
 ## Roadmap
 
 [x] Install all necessary UI dependencies (NextUI, MagicUI, TailwindCSS, Framer Motion)
+
 [x] Set up a Vercel PostreSQL database
+
 [x] Set up Prisma ORM and connect to database
+
 [x] Write Prisma Schema and seed with dummy data
+
 [x] Make a simple landing page
+
 [x] Make a component that displays the transactions
+
 [x] Make an API route that fetches transaction rows
+
 [x] Make a modal form that gathers the info for a new transaction
+
 [x] Make an API route that posts the new transaction to the database
+
 [ ] Make the page update instantly when a new transaction is added
+
 [ ] Configure NextAuth.js
+
 [ ] Make protected authentication routes
+
 [ ] Make a summary component that displays the current balance and income/expense tallies
+
 [ ] Make a log out feature
+
 [ ] Tidy up the styling
+
 [ ] Make the landing page like a proper SaaS

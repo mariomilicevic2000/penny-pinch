@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import ExpenseCard from './expensecard';
 import { Transaction } from '@/types';
+import { TRANSACTIONTYPES } from '@prisma/client';
+import { NextResponse } from 'next/server';
 
 const TransactionList = () => {
   const [income, setIncome] = useState<Transaction[]>([]);
@@ -12,9 +14,12 @@ const TransactionList = () => {
     const fetchTransactions = async () => {
       try {
         const response = await fetch('/api/fetchtrans');
-        const data: Transaction[] = await response.json();
-        setIncome(data.filter(transaction => transaction.type === 'INCOME'));
-        setExpenses(data.filter(transaction => transaction.type === 'EXPENSE'));
+        const data: any = await response.json();
+        const transactions: Transaction[] = data.data;
+
+
+        setIncome(transactions.filter(transaction => transaction.type === TRANSACTIONTYPES.INCOME));
+        setExpenses(transactions.filter(transaction => transaction.type === TRANSACTIONTYPES.EXPENSE));
         setLoading(false);
       } catch (error) {
         console.error('Error fetching transactions:', error);
