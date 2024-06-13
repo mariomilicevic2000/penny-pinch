@@ -52,7 +52,7 @@ export default async function TransactionList() {
         <h1 className='text-4xl text-center'>Income</h1>
         <div className='grid grid-cols-1 gap-4'>
           {income.map(transaction => (
-            <ExpenseCard transaction={transaction} />
+            <ExpenseCard transaction={transaction} key={transaction.id}/>
           ))}
         </div>
       </div>
@@ -60,7 +60,7 @@ export default async function TransactionList() {
         <h1 className='text-4xl text-center'>Expenses</h1>
         <div className='grid grid-cols-1 gap-4'>
           {expenses.map(transaction => (
-            <ExpenseCard transaction={transaction} />
+            <ExpenseCard transaction={transaction} key={transaction.id}/>
           ))}
         </div>
     </div>
